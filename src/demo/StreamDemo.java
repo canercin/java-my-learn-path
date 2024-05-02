@@ -3,6 +3,8 @@ package demo;
 import model.Invoice;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Stream;
 
 public class StreamDemo {
     public static void main(String[] args) {
@@ -31,6 +33,8 @@ public class StreamDemo {
 
         double invoiceSum = invoices.stream().map(x -> x.getPrice() * x.getQuantity()).reduce(Double::sum).orElse(0.);
         System.out.println(invoiceSum);
+
+        Stream.generate(() -> new Random().nextInt(100)).limit(20).forEach(System.out::println);
     }
 
     /**
